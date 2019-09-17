@@ -1,0 +1,19 @@
+# Dependency directory
+node_modules/
+
+# Ignore built ts files
+dist/
+
+# Coverage reports
+coverage/
+
+# Editors
+.idea/
+.vscode/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# ignore yarn.lock
+yarn.lock
