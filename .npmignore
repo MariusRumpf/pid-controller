@@ -1,0 +1,8 @@
+.editorconfig
+.eslintignore
+.eslintrc
+jest.config.js
+tsconfig.json
+test/
+coverage/
+src/
