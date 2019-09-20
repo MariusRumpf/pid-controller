@@ -1,7 +1,7 @@
 import PidConfig from './types/PidConfig';
 import { roundToDecimals } from './util';
 
-class PID {
+export class PID {
   /**
    * Proportional value
    */
@@ -261,5 +261,3 @@ class PID {
     return output;
   }
 }
-
-export default PID;

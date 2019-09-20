@@ -1,4 +1,4 @@
-import PID from '../src/index';
+import { PID } from '../src/index';
 
 test('PID construction', () => {
   const config = {
