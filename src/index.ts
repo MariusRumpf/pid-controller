@@ -65,7 +65,7 @@ export class PID {
   /**
    * Last received input value
    */
-  private lastInput: number = null;
+  private lastInput: number|null = null;
 
   /**
    * Calculate proportial on measurement or on error
