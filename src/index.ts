@@ -1,41 +1,41 @@
 import PidConfig from './types/PidConfig';
 import { roundToDecimals } from './util';
 
-export class PID {
+class PID {
   /**
    * Proportional value
    */
-  private setKp: number;
+  private setKp!: number;
 
   /**
    * Integral value
    */
-  private setKi: number;
+  private setKi!: number;
 
   /**
    * Derivative value
    */
-  private setKd: number;
+  private setKd!: number;
 
   /**
    * Interal proportional value
    */
-  private kp: number;
+  private kp!: number;
 
   /**
    * Interal integral value
    */
-  private ki: number;
+  private ki!: number;
 
   /**
    * Interal derivative value
    */
-  private kd: number;
+  private kd!: number;
 
   /**
    * The target value for the pid controller
    */
-  private target: number;
+  private target!: number;
 
   /**
    * Rate at which update function is called and data is sampled
@@ -45,12 +45,12 @@ export class PID {
   /**
    * Minimum possible value for output
    */
-  private outputMin: number;
+  private outputMin!: number;
 
   /**
    * Maximum possible value for output
    */
-  private outputMax: number;
+  private outputMax!: number;
 
   /**
    * Last value written for output
@@ -120,7 +120,7 @@ export class PID {
 
     output += this.outputSum - this.kd * inputDelta;
 
-    this.output = this.applyOutputLimits(Math.round(output));
+    this.output = this.applyOutputLimits(output);
 
     // Update state variables
     this.lastInput = input;
@@ -261,3 +261,5 @@ export class PID {
     return output;
   }
 }
+
+export default PID;

@@ -1,17 +1,16 @@
 {
+  "root": true,
   "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "jest"
+  ],
   "extends": [
-    "airbnb-base",
-    "plugin:import/typescript",
-    "plugin:@typescript-eslint/recommended"
+    "airbnb-typescript/base",
+    "plugin:jest/all"
   ],
   "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module"
-  },
-  "env": {
-    "jest": true,
-    "node": true
+    "project": "./tsconfig.json"
   },
   "rules": {
   }
