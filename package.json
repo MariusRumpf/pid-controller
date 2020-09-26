@@ -11,6 +11,7 @@
     "url": "https://github.com/MariusRumpf/pid-controller"
   },
   "scripts": {
+    "prepublish": "tsc",
     "build": "npm run build-ts && npm run lint",
     "test:unit": "jest --coverage --verbose",
     "test": "npm run build && npm run test:unit",
