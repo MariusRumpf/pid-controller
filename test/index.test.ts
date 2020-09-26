@@ -1,4 +1,4 @@
-import PID from '../src/index';
+import { PIDController } from '../src/index';
 
 describe('pid controller', () => {
   it('constructs', () => {
@@ -6,13 +6,13 @@ describe('pid controller', () => {
     const config = {
       p: 1, i: 0, d: 0, sampleTime: 1000, target: 0, outputMin: 0, outputMax: 255,
     };
-    const pid = new PID(config);
+    const pid = new PIDController(config);
     expect(pid.getConfig()).toStrictEqual(config);
   });
 
   it('handles setTarget calls', () => {
     expect.assertions(2);
-    const pid = new PID({
+    const pid = new PIDController({
       p: 1, i: 0, d: 0, sampleTime: 1000, target: 0, outputMin: 0, outputMax: 255,
     });
     expect(pid.getTarget()).toBe(0);
@@ -23,7 +23,7 @@ describe('pid controller', () => {
 
   it('handles setSampleTime calls', () => {
     expect.assertions(5);
-    const pid = new PID({
+    const pid = new PIDController({
       p: 1, i: 0, d: 0, sampleTime: 1000, target: 100, outputMin: 0, outputMax: 255,
     });
     expect(pid.getConfig().sampleTime).toBe(1000);
@@ -40,7 +40,7 @@ describe('pid controller', () => {
 
   it('handles setTunings calls', () => {
     expect.assertions(5);
-    const pid = new PID({
+    const pid = new PIDController({
       p: 1, i: 0, d: 0, sampleTime: 1000, target: 100, outputMin: 0, outputMax: 100,
     });
     expect(pid.getConfig()).toMatchObject({ p: 1, i: 0, d: 0 });
@@ -55,7 +55,7 @@ describe('pid controller', () => {
 
   it('handles setOutputLimits calls', () => {
     expect.assertions(3);
-    const pid = new PID({
+    const pid = new PIDController({
       p: 1, i: 0, d: 0, sampleTime: 1000, target: 100, outputMin: 0, outputMax: 100,
     });
     expect(pid.getConfig()).toMatchObject({ outputMin: 0, outputMax: 100 });
@@ -68,7 +68,7 @@ describe('pid controller', () => {
 
   it('handles proportionalOnMeasurement option', () => {
     expect.assertions(4);
-    let pid = new PID({
+    let pid = new PIDController({
       p: 1,
       i: 0,
       d: 0,
@@ -82,7 +82,7 @@ describe('pid controller', () => {
     expect(pid.update(0)).toBe(0);
     expect(pid.update(0)).toBe(0);
 
-    pid = new PID({
+    pid = new PIDController({
       p: 0,
       i: 1,
       d: 0,
@@ -99,7 +99,7 @@ describe('pid controller', () => {
 
   it('handles proportional part of update call', () => {
     expect.assertions(2);
-    const pid = new PID({
+    const pid = new PIDController({
       p: 2, i: 0, d: 0, sampleTime: 1000, target: 10, outputMin: -255, outputMax: 100,
     });
     expect(pid.update(0)).toBe(20);
@@ -110,7 +110,7 @@ describe('pid controller', () => {
 
   it('handles derivative part of update call', () => {
     expect.assertions(2);
-    const pid = new PID({
+    const pid = new PIDController({
       p: 0, i: 0, d: 2, sampleTime: 1000, target: 10, outputMin: -255, outputMax: 100,
     });
 
@@ -120,7 +120,7 @@ describe('pid controller', () => {
 
   it('handles integral part of update call', () => {
     expect.assertions(3);
-    const pid = new PID({
+    const pid = new PIDController({
       p: 0, i: 2, d: 0, sampleTime: 1000, target: 10, outputMin: -255, outputMax: 100,
     });
 
@@ -131,7 +131,7 @@ describe('pid controller', () => {
 
   it('handles negativ integral part of update call', () => {
     expect.assertions(2);
-    const pid = new PID({
+    const pid = new PIDController({
       p: 0, i: 2, d: 0, sampleTime: 1000, target: -10, outputMin: -255, outputMax: 100,
     });
 
@@ -141,7 +141,7 @@ describe('pid controller', () => {
 
   it('calculates output with multiple updates', () => {
     expect.assertions(4);
-    const pid = new PID({
+    const pid = new PIDController({
       p: 1, i: 0.1, d: 1, sampleTime: 1000, target: 10, outputMin: -255, outputMax: 100,
     });
 
