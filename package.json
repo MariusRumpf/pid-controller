@@ -1,6 +1,6 @@
 {
   "name": "@mariusrumpf/pid-controller",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "PID controller written in node.js",
   "author": "Marius Rumpf",
   "license": "MIT",
