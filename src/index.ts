@@ -225,7 +225,7 @@ export class PIDController {
    * is restarted
    */
   public resetState(): void {
-    this.outputSum = this.output;
+    this.outputSum = 0;
     this.lastInput = null;
   }
 

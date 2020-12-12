@@ -66,6 +66,17 @@ describe('pid controller', () => {
     expect(() => { pid.setOutputLimits(100, 0); }).toThrow(Error);
   });
 
+  it('handles resetState calls', () => {
+    expect.assertions(2);
+    const pid = new PIDController({
+      p: 0, i: 1, d: 0, sampleTime: 1000, target: 10, outputMin: -255, outputMax: 100,
+    });
+
+    expect(pid.update(0)).toBe(10);
+    pid.resetState();
+    expect(pid.update(0)).toBe(10);
+  });
+
   it('handles proportionalOnMeasurement option', () => {
     expect.assertions(4);
     let pid = new PIDController({
