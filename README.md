@@ -23,3 +23,29 @@ const controller = new PIDController({
 
 const correction = controller.update(10);
 ```
+
+## API
+
+### `update(value: number): number`
+
+Call this function in a regular interval of
+the set sample time with the input value for
+the pid, will return the output value to apply.
+
+### `setTarget(target:number)`
+
+Set a new target value for the pid.
+
+### `setOutputLimits(min: number, max: number)`
+
+Set the minimum and maximum value possible
+for the pid output.
+
+### `setTunings(p: number, i: number, d: number)`
+
+Update the used pid tunings on the fly while operating.
+
+### `setSampleTime(sampleTime: number)`
+
+Set the rate in milliseconds at which the pid update
+calculation is called
